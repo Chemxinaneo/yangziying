@@ -34,41 +34,43 @@
             letter-spacing: 0.1em;
         }
 
-        /* 滑动容器 */
         .swiper-container {
             width: 100%;
             height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto; /* 允许垂直滚动 */
             position: relative;
-            overflow: hidden;
         }
 
-        /* 时间轴轨道 */
         .timeline-track {
             display: flex;
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* 单个时间节点 */
-        .timeline-item {
-            position: relative;
+        .timeline-page {
             min-width: 100vw;
-            height: 100%;
+            overflow-y: auto; /* 允许单个页面内垂直滚动 */
+            height: 100vh;
+        }
+
+        .timeline-item {
             padding: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column; /* 垂直排列 */
         }
 
-        /* 内容卡片 */
         .timeline-card {
             background: white;
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             max-width: 600px;
-            position: relative;
+            width: 100%;
             transition: transform 0.3s;
+            margin-bottom: 2rem; /* 增加下部边距 */
         }
 
         .timeline-card:hover {
@@ -130,7 +132,6 @@
             cursor: pointer;
         }
 
-        /* 导航指示器 */
         .nav-dots {
             position: fixed;
             bottom: 2rem;
@@ -155,7 +156,6 @@
             transform: scale(1.3);
         }
 
-        /* 左右箭头 */
         .arrow {
             position: absolute;
             top: 50%;
@@ -187,6 +187,17 @@
             .arrow {
                 font-size: 1.5rem;
             }
+
+            .message-box textarea {
+                width: 100%;
+                height: 100px;
+                font-size: 1rem;
+            }
+
+            .message-box button {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -194,191 +205,208 @@
     <header class="timeline-header">
         <h1>我们的浪漫回忆时光轴</h1>
     </header>
-
     <div class="swiper-container">
         <div class="timeline-track">
-            <!-- 事件1 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2020年4月5日</div>
-                    <div class="description">
-                        <strong>初次心动</strong>
-                        <p>我们第一次一起坐过山车。你在过山车上紧紧拉着我的袖口，那一刻，我感受到了你的依赖和信任。惊险的旅程中，有你在身侧，心跳加速的不只是过山车，更是我对你的心动。</p>
-                    </div>
-                    <img src="images/001.jpg" alt="初次心动" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-1"></textarea>
-                        <button onclick="saveMessage(1)">保存留言</button>
+<!-- 事件1 -->
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2020年4月5日</div>
+                        <div class="description">
+                            <strong>初次心动</strong>
+                            <p>我们第一次一起坐过山车。你在过山车上紧紧拉着我的袖口，那一刻，我感受到了你的依赖和信任。惊险的旅程中，有你在身侧，心跳加速的不只是过山车，更是我对你的心动。</p>
+                        </div>
+                        <img src="images/001.jpg" alt="初次心动" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-1"></textarea>
+                            <button onclick="saveMessage(1)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <!-- 事件2 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2020年4月7日</div>
-                    <div class="description">
-                        <strong>我们的故事开始了</strong>
-                        <p>这一天，我们在一起了。有句话，宾语是你，"吉下两点一口"，又有"欠"字相依。这是我们之间独特的默契，如同命中注定般，让彼此的生命交织在一起。</p>
-                    </div>
-                    <img src="images/002.jpg" alt="我们的故事开始了" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-2"></textarea>
-                        <button onclick="saveMessage(2)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2020年4月7日</div>
+                        <div class="description">
+                            <strong>我们的故事开始了</strong>
+                            <p>这一天，我们在一起了。有句话，宾语是你，"吉下两点一口"，又有"欠"字相依。这是我们之间独特的默契，如同命中注定般，让彼此的生命交织在一起。</p>
+                        </div>
+                        <img src="images/002.jpg" alt="我们的故事开始了" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-2"></textarea>
+                            <button onclick="saveMessage(2)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 事件3 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2020年国庆节</div>
-                    <div class="description">
-                        <strong>西安之旅</strong>
-                        <p>国庆节，我们踏上了西安的土地。一起去了海洋馆，海底世界的绚丽多彩见证了我们的快乐。夜晚的大唐不夜城灯火辉煌，我们在古色古香的街道上漫步，感受着历史与现代的交织。</p>
-                    </div>
-                    <img src="images/003.jpg" alt="西安之旅" class="image" style="max-height: 550px;">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-3"></textarea>
-                        <button onclick="saveMessage(3)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2020年国庆节</div>
+                        <div class="description">
+                            <strong>西安之旅</strong>
+                            <p>国庆节，我们踏上了西安的土地。一起去了海洋馆，海底世界的绚丽多彩见证了我们的快乐。夜晚的大唐不夜城灯火辉煌，我们在古色古香的街道上漫步，感受着历史与现代的交织。</p>
+                        </div>
+                        <img src="images/003.jpg" alt="西安之旅" class="image" style="max-height: 550px;">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-3"></textarea>
+                            <button onclick="saveMessage(3)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <!-- 事件4 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2021年清明节</div>
-                    <div class="description">
-                        <strong>重庆相约</strong>
-                        <p>我们去了重庆，打卡了你想去的星卡里。山城的夜景，美食的诱惑，以及与你在一起的每分每秒，都让这次旅行变得格外难忘。</p>
-                    </div>
-                    <img src="images/004.jpg" alt="重庆相约" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-4"></textarea>
-                        <button onclick="saveMessage(4)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2021年清明节</div>
+                        <div class="description">
+                            <strong>重庆相约</strong>
+                            <p>我们去了重庆，打卡了你想去的星卡里。山城的夜景，美食的诱惑，以及与你在一起的每分每秒，都让这次旅行变得格外难忘。</p>
+                        </div>
+                        <img src="images/004.jpg" alt="重庆相约" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-4"></textarea>
+                            <button onclick="saveMessage(4)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-                        <!-- 事件5 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2021年劳动节</div>
-                    <div class="description">
-                        <strong>再次邂逅西安</strong>
-                        <p>我们又去了西安，创造了新的回忆。你的那张可爱表情包也是此时拍摄的，每当看到这张照片，都能让我想起那时的欢声笑语。</p>
-                    </div>
-                    <img src="images/005.jpg" alt="再次邂逅西安" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-5"></textarea>
-                        <button onclick="saveMessage(5)">保存留言</button>
+            <!-- 事件5 -->
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2021年劳动节</div>
+                        <div class="description">
+                            <strong>再次邂逅西安</strong>
+                            <p>我们又去了西安，创造了新的回忆。你的那张可爱表情包也是此时拍摄的，每当看到这张照片，都能让我想起那时的欢声笑语。</p>
+                        </div>
+                        <img src="images/005.jpg" alt="再次邂逅西安" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-5"></textarea>
+                            <button onclick="saveMessage(5)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 事件6 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2023年9月</div>
-                    <div class="description">
-                        <strong>薛之谦演唱会</strong>
-                        <p>我们一起看了薛之谦的演唱会，这是我人生中的第一次演唱会。音乐响起的那一刻，所有的旋律都变得更加动人，因为有你在身旁。</p>
-                    </div>
-                    <img src="images/006.jpg" alt="薛之谦演唱会" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-6"></textarea>
-                        <button onclick="saveMessage(6)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2023年9月</div>
+                        <div class="description">
+                            <strong>薛之谦演唱会</strong>
+                            <p>我们一起看了薛之谦的演唱会，这是我人生中的第一次演唱会。音乐响起的那一刻，所有的旋律都变得更加动人，因为有你在身旁。</p>
+                        </div>
+                        <img src="images/006.jpg" alt="薛之谦演唱会" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-6"></textarea>
+                            <button onclick="saveMessage(6)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <!-- 事件7 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2023年10月</div>
-                    <div class="description">
-                        <strong>古风浪漫</strong>
-                        <p>我们再一次来到西安，这次我带了相机，为你拍摄了古风照片。你身着汉服，仿佛从画中走出的仙子，那一瞬间，时光仿佛静止，唯有你的美丽留存。</p>
-                    </div>
-                    <img src="images/007.jpg" alt="古风浪漫" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-7"></textarea>
-                        <button onclick="saveMessage(7)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2023年10月</div>
+                        <div class="description">
+                            <strong>古风浪漫</strong>
+                            <p>我们再一次来到西安，这次我带了相机，为你拍摄了古风照片。你身着汉服，仿佛从画中走出的仙子，那一瞬间，时光仿佛静止，唯有你的美丽留存。</p>
+                        </div>
+                        <img src="images/007.jpg" alt="古风浪漫" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-7"></textarea>
+                            <button onclick="saveMessage(7)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 事件8 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2024年4月</div>
-                    <div class="description">
-                        <strong>长沙之约</strong>
-                        <p>我们去了长沙，喝了茶颜悦色，拍了写真。甜蜜的茶饮，如同我们的爱情，浓郁而芬芳。</p>
-                    </div>
-                    <img src="images/008.jpg" alt="长沙之约" class="image">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-8"></textarea>
-                        <button onclick="saveMessage(8)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2024年4月</div>
+                        <div class="description">
+                            <strong>长沙之约</strong>
+                            <p>我们去了长沙，喝了茶颜悦色，拍了写真。甜蜜的茶饮，如同我们的爱情，浓郁而芬芳。</p>
+                        </div>
+                        <img src="images/008.jpg" alt="长沙之约" class="image">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-8"></textarea>
+                            <button onclick="saveMessage(8)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 事件9 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2024年5月</div>
-                    <div class="description">
-                        <strong>青岛之夏</strong>
-                        <p>我们去了青岛，感受海风拂面的舒适。蔚蓝的天空，洁白的浪花，与你相依沙滩漫步，所有的风景都因为你的存在而更加迷人。</p>
-                    </div>
-                    <img src="images/009.jpg" alt="青岛之夏" class="image" style="max-height: 600px;">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-9"></textarea>
-                        <button onclick="saveMessage(9)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2024年5月</div>
+                        <div class="description">
+                            <strong>青岛之夏</strong>
+                            <p>我们去了青岛，感受海风拂面的舒适。蔚蓝的天空，洁白的浪花，与你相依沙滩漫步，所有的风景都因为你的存在而更加迷人。</p>
+                        </div>
+                        <img src="images/009.jpg" alt="青岛之夏" class="image" style="max-height: 600px;">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-9"></textarea>
+                            <button onclick="saveMessage(9)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <!-- 事件10 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2024年12月</div>
-                    <div class="description">
-                        <strong>峨眉雪景</strong>
-                        <p>冬日的峨眉山银装素裹，我们手牵手走在雪地中。寒冷的天气抵挡不住内心的温暖。与你一起看雪，是我一直以来的愿望。</p>
-                    </div>
-                    <img src="images/010.jpg" alt="峨眉雪景" class="image" style="max-height: 600px;">
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-10"></textarea>
-                        <button onclick="saveMessage(10)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2024年12月</div>
+                        <div class="description">
+                            <strong>峨眉雪景</strong>
+                            <p>冬日的峨眉山银装素裹，我们手牵手走在雪地中。寒冷的天气抵挡不住内心的温暖。与你一起看雪，是我一直以来的愿望。</p>
+                        </div>
+                        <img src="images/010.jpg" alt="峨眉雪景" class="image" style="max-height: 600px;">
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-10"></textarea>
+                            <button onclick="saveMessage(10)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 事件11 -->
-            <div class="timeline-item">
-                <div class="timeline-card">
-                    <div class="date">2025年</div>
-                    <div class="description">
-                        <strong>新的征程</strong>
-                        <p>2025年，我们即将开启新的旅程，第一站是贵阳。未来的日子里，我希望和你一起走过更多的地方，创造属于我们的故事。</p>
-                    </div>
-                    <!-- 留言框 -->
-                    <div class="message-box">
-                        <textarea placeholder="写下你的感受..." id="message-11"></textarea>
-                        <button onclick="saveMessage(11)">保存留言</button>
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="date">2025年</div>
+                        <div class="description">
+                            <strong>新的征程</strong>
+                            <p>2025年，我们即将开启新的旅程，第一站是贵阳。未来的日子里，我希望和你一起走过更多的地方，创造属于我们的故事。</p>
+                        </div>
+                        <!-- 留言框 -->
+                        <div class="message-box">
+                            <textarea placeholder="写下你的感受..." id="message-11"></textarea>
+                            <button onclick="saveMessage(11)">保存留言</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -388,7 +416,6 @@
     <div class="nav-dots"></div>
     <div class="arrow left">&#9664;</div>
     <div class="arrow right">&#9654;</div>
-
     <script>
         class TimelineSlider {
             constructor() {
@@ -406,7 +433,6 @@
 
                 this.init();
             }
-
             init() {
                 // 创建导航点
                 this.items.forEach((_, index) => {
@@ -465,7 +491,7 @@
                 return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             }
 
-                       updatePosition(offset) {
+            updatePosition(offset) {
                 const position = -this.currentIndex * window.innerWidth + offset;
                 this.track.style.transform = `translateX(${position}px)`;
             }
@@ -494,7 +520,12 @@
             saveMessage(index) {
                 const textarea = document.getElementById(`message-${index}`);
                 const message = textarea.value;
-                localStorage.setItem(`message-${index}`, message);
+                try {
+                    localStorage.setItem(`message-${index}`, message);
+                    alert('留言已保存'); // 添加提示
+                } catch (error) {
+                    console.error('保存留言时出错:', error);
+                }
             }
 
             loadMessages() {
@@ -518,7 +549,12 @@
         function saveMessage(index) {
             const textarea = document.getElementById(`message-${index}`);
             const message = textarea.value;
-            localStorage.setItem(`message-${index}`, message);
+            try {
+                localStorage.setItem(`message-${index}`, message);
+                alert('留言已保存'); // 添加提示
+            } catch (error) {
+                console.error('保存留言时出错:', error);
+            }
         }
     </script>
 </body>
