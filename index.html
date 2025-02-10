@@ -37,7 +37,9 @@
         .swiper-container {
             width: 100%;
             height: 100vh;
+            overflow-x: auto;
             overflow-y: hidden; /* 防止容器本身滚动 */
+            scroll-snap-type: x mandatory;
             position: relative;
         }
 
@@ -53,6 +55,7 @@
             max-height: 100vh; /* 限制最大高度 */
             display: flex;
             flex-direction: column;
+            scroll-snap-align: start;
         }
 
         .timeline-item {
@@ -64,7 +67,8 @@
         }
 
         .timeline-card {
-            background: white;
+            background: #fff;
+            background: var(--bg-color, #fff);
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -108,6 +112,8 @@
             border-radius: 10px;
             margin-top: 1.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         .message-box {
             margin-top: 1rem;
@@ -174,6 +180,11 @@
             right: 10px;
         }
 
+        .arrow.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
         @media (max-width: 768px) {
             .timeline-card {
                 margin: 0 1.5rem;
@@ -216,7 +227,7 @@
                             <strong>初次心动</strong>
                             <p>我们第一次一起坐过山车。你在过山车上紧紧拉着我的袖口，那一刻，我感受到了你的依赖和信任。惊险的旅程中，有你在身侧，心跳加速的不只是过山车，更是我对你的心动。</p>
                         </div>
-                        <img src="images/001.jpg" alt="初次心动" class="image">
+                        <img data-src="images/001.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-1"></textarea>
@@ -234,7 +245,7 @@
                             <strong>我们的故事开始了</strong>
                             <p>这一天，我们在一起了。有句话，宾语是你，"吉下两点一口"，又有"欠"字相依。这是我们之间独特的默契，如同命中注定般，让彼此的生命交织在一起。</p>
                         </div>
-                        <img src="images/002.jpg" alt="我们的故事开始了" class="image">
+                        <img data-src="images/002.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-2"></textarea>
@@ -253,7 +264,7 @@
                             <strong>西安之旅</strong>
                             <p>国庆节，我们踏上了西安的土地。一起去了海洋馆，海底世界的绚丽多彩见证了我们的快乐。夜晚的大唐不夜城灯火辉煌，我们在古色古香的街道上漫步，感受着历史与现代的交织。</p>
                         </div>
-                        <img src="images/003.jpg" alt="西安之旅" class="image" style="max-height: 550px;">
+                        <img data-src="images/003.jpg" class="image" style="max-height: 550px;" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-3"></textarea>
@@ -272,7 +283,7 @@
                             <strong>重庆相约</strong>
                             <p>我们去了重庆，打卡了你想去的星卡里。山城的夜景，美食的诱惑，以及与你在一起的每分每秒，都让这次旅行变得格外难忘。</p>
                         </div>
-                        <img src="images/004.jpg" alt="重庆相约" class="image">
+                        <img data-src="images/004.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-4"></textarea>
@@ -290,7 +301,7 @@
                             <strong>再次邂逅西安</strong>
                             <p>我们又去了西安，创造了新的回忆。你的那张可爱表情包也是此时拍摄的，每当看到这张照片，都能让我想起那时的欢声笑语。</p>
                         </div>
-                        <img src="images/005.jpg" alt="再次邂逅西安" class="image">
+                        <img data-src="images/005.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-5"></textarea>
@@ -309,7 +320,7 @@
                             <strong>薛之谦演唱会</strong>
                             <p>我们一起看了薛之谦的演唱会，这是我人生中的第一次演唱会。音乐响起的那一刻，所有的旋律都变得更加动人，因为有你在身旁。</p>
                         </div>
-                        <img src="images/006.jpg" alt="薛之谦演唱会" class="image">
+                        <img data-src="images/006.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-6"></textarea>
@@ -328,7 +339,7 @@
                             <strong>古风浪漫</strong>
                             <p>我们再一次来到西安，这次我带了相机，为你拍摄了古风照片。你身着汉服，仿佛从画中走出的仙子，那一瞬间，时光仿佛静止，唯有你的美丽留存。</p>
                         </div>
-                        <img src="images/007.jpg" alt="古风浪漫" class="image">
+                        <img data-src="images/007.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-7"></textarea>
@@ -337,6 +348,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- 事件8 -->
             <div class="timeline-page">
                 <div class="timeline-item">
@@ -346,7 +358,7 @@
                             <strong>长沙之约</strong>
                             <p>我们去了长沙，喝了茶颜悦色，拍了写真。甜蜜的茶饮，如同我们的爱情，浓郁而芬芳。</p>
                         </div>
-                        <img src="images/008.jpg" alt="长沙之约" class="image">
+                        <img data-src="images/008.jpg" class="image" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-8"></textarea>
@@ -355,7 +367,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- 事件9 -->
             <div class="timeline-page">
                 <div class="timeline-item">
@@ -365,7 +376,7 @@
                             <strong>青岛之夏</strong>
                             <p>我们去了青岛，感受海风拂面的舒适。蔚蓝的天空，洁白的浪花，与你相依沙滩漫步，所有的风景都因为你的存在而更加迷人。</p>
                         </div>
-                        <img src="images/009.jpg" alt="青岛之夏" class="image" style="max-height: 600px;">
+                        <img data-src="images/009.jpg" class="image" style="max-height: 600px;" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-9"></textarea>
@@ -384,7 +395,7 @@
                             <strong>峨眉雪景</strong>
                             <p>冬日的峨眉山银装素裹，我们手牵手走在雪地中。寒冷的天气抵挡不住内心的温暖。与你一起看雪，是我一直以来的愿望。</p>
                         </div>
-                        <img src="images/010.jpg" alt="峨眉雪景" class="image" style="max-height: 600px;">
+                        <img data-src="images/010.jpg" class="image" style="max-height: 600px;" onload="this.style.opacity=1">
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-10"></textarea>
@@ -475,13 +486,16 @@
                 if (!this.isDragging) return;
                 e.preventDefault();
 
-                this.currentX = this.getClientX(e) - this.startX;
-                this.currentY = this.getClientY(e) - this.startY; // 记录当前Y坐标
+                const deltaX = this.getClientX(e) - this.startX;
+                const deltaY = Math.abs(this.getClientY(e) - this.startY); 
 
-                // 只处理水平滚动
-                if (Math.abs(this.currentX) > Math.abs(this.currentY)) {
-                    this.updatePosition(this.currentX);
+                // 垂直滚动优先（当垂直位移大于30px时视为滚动操作）
+                if (deltaY > 30) {
+                    this.isDragging = false;
+                    return;
                 }
+
+                this.updatePosition(deltaX);
             }
             handleEnd() {
                 if (!this.isDragging) return;
@@ -518,6 +532,13 @@
                 document.querySelectorAll('.dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === index);
                 });
+
+                // 更新箭头状态
+                this.leftArrow.classList.toggle('disabled', index === 0);
+                this.rightArrow.classList.toggle('disabled', index === this.items.length - 1);
+
+                // 滚动位置重置
+                document.querySelectorAll('.timeline-page')[this.currentIndex].scrollTop = 0;
             }
 
             prev() {
@@ -531,26 +552,32 @@
             }
 
             saveMessage(index) {
+                const adjustedIndex = index - 1; // 修正id与数组索引偏移
                 const textarea = document.getElementById(`message-${index}`);
                 const message = textarea.value;
                 try {
-                    localStorage.setItem(`message-${index}`, message);
+                    const messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                    messages[adjustedIndex] = message;
+                    localStorage.setItem('messages', JSON.stringify(messages));
                     alert('留言已保存'); // 添加提示
                 } catch (error) {
                     console.error('保存留言时出错:', error);
+                    alert('留言保存失败，请检查浏览器设置');
                 }
             }
 
             loadMessages() {
-                this.items.forEach((_, index) => {
-                    const textarea = document.getElementById(`message-${index + 1}`);
-                    if (textarea) {
-                        const savedMessage = localStorage.getItem(`message-${index + 1}`);
-                        if (savedMessage) {
-                            textarea.value = savedMessage;
+                try {
+                    const messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                    this.items.forEach((_, index) => {
+                        const textarea = document.getElementById(`message-${index + 1}`);
+                        if (textarea && messages.hasOwnProperty(index)) {
+                            textarea.value = messages[index];
                         }
-                    }
-                });
+                    });
+                } catch (error) {
+                    console.error('加载留言时出错:', error);
+                }
             }
         }
 
@@ -559,14 +586,32 @@
             new TimelineSlider();
         });
 
+        // 图片懒加载
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            observer.observe(img);
+        });
+
         function saveMessage(index) {
             const textarea = document.getElementById(`message-${index}`);
             const message = textarea.value;
             try {
-                localStorage.setItem(`message-${index}`, message);
+                const messages = JSON.parse(localStorage.getItem('messages') || '{}');
+                messages[index - 1] = message;
+                localStorage.setItem('messages', JSON.stringify(messages));
                 alert('留言已保存'); // 添加提示
             } catch (error) {
                 console.error('保存留言时出错:', error);
+                alert('留言保存失败，请检查浏览器设置');
             }
         }
     </script>
