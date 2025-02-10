@@ -105,12 +105,6 @@
             border-radius: 10px;
             margin-top: 1.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-
-        .large-image {
-            width: 80%;
-            max-height: 300px;
         }
 
         .message-box {
@@ -180,30 +174,6 @@
             right: 10px;
         }
 
-        /* 信件动画 */
-        .falling-letter {
-            display: none;
-            position: fixed;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 120px;
-            background: url('images/letter.png') no-repeat center/contain;
-            animation: fall 2s ease-in-out forwards;
-        }
-
-        @keyframes fall {
-            0% {
-                top: -100px;
-                opacity: 0;
-            }
-            100% {
-                top: 50%;
-                opacity: 1;
-            }
-        }
-
         @media (max-width: 768px) {
             .timeline-card {
                 margin: 0 1.5rem;
@@ -238,13 +208,130 @@
                     <img src="images/001.jpg" alt="初次心动" class="image">
                     <!-- 留言框 -->
                     <div class="message-box">
-                        <textarea placeholder="写下你的感受..."></textarea>
-                        <button>保存留言</button>
+                        <textarea placeholder="写下你的感受..." id="message-1"></textarea>
+                        <button onclick="saveMessage(1)">保存留言</button>
                     </div>
                 </div>
             </div>
 
-            <!-- 其他事件... -->
+            <!-- 事件2 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2020年4月7日</div>
+                    <div class="description">
+                        <strong>我们的故事开始了</strong>
+                        <p>这一天，我们在一起了。有句话，宾语是你，"吉下两点一口"，又有"欠"字相依。这是我们之间独特的默契，如同命中注定般，让彼此的生命交织在一起。</p>
+                    </div>
+                    <img src="images/002.jpg" alt="我们的故事开始了" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-2"></textarea>
+                        <button onclick="saveMessage(2)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事件3 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2020年国庆节</div>
+                    <div class="description">
+                        <strong>西安之旅</strong>
+                        <p>国庆节，我们踏上了西安的土地。一起去了海洋馆，海底世界的绚丽多彩见证了我们的快乐。夜晚的大唐不夜城灯火辉煌，我们在古色古香的街道上漫步，感受着历史与现代的交织。</p>
+                    </div>
+                    <img src="images/003.jpg" alt="西安之旅" class="image" style="max-height: 550px;">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-3"></textarea>
+                        <button onclick="saveMessage(3)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事件4 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2021年清明节</div>
+                    <div class="description">
+                        <strong>重庆相约</strong>
+                        <p>我们去了重庆，打卡了你想去的星卡里。山城的夜景，美食的诱惑，以及与你在一起的每分每秒，都让这次旅行变得格外难忘。</p>
+                    </div>
+                    <img src="images/004.jpg" alt="重庆相约" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-4"></textarea>
+                        <button onclick="saveMessage(4)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- 事件5 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2021年劳动节</div>
+                    <div class="description">
+                        <strong>再次邂逅西安</strong>
+                        <p>我们又去了西安，创造了新的回忆。你的那张可爱表情包也是此时拍摄的，每当看到这张照片，都能让我想起那时的欢声笑语。</p>
+                    </div>
+                    <img src="images/005.jpg" alt="再次邂逅西安" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-5"></textarea>
+                        <button onclick="saveMessage(5)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事件6 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2023年9月</div>
+                    <div class="description">
+                        <strong>薛之谦演唱会</strong>
+                        <p>我们一起看了薛之谦的演唱会，这是我人生中的第一次演唱会。音乐响起的那一刻，所有的旋律都变得更加动人，因为有你在身旁。</p>
+                    </div>
+                    <img src="images/006.jpg" alt="薛之谦演唱会" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-6"></textarea>
+                        <button onclick="saveMessage(6)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事件7 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2023年10月</div>
+                    <div class="description">
+                        <strong>古风浪漫</strong>
+                        <p>我们再一次来到西安，这次我带了相机，为你拍摄了古风照片。你身着汉服，仿佛从画中走出的仙子，那一瞬间，时光仿佛静止，唯有你的美丽留存。</p>
+                    </div>
+                    <img src="images/007.jpg" alt="古风浪漫" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-7"></textarea>
+                        <button onclick="saveMessage(7)">保存留言</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事件8 -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="date">2024年4月</div>
+                    <div class="description">
+                        <strong>长沙之约</strong>
+                        <p>我们去了长沙，喝了茶颜悦色，拍了写真。甜蜜的茶饮，如同我们的爱情，浓郁而芬芳。</p>
+                    </div>
+                    <img src="images/008.jpg" alt="长沙之约" class="image">
+                    <!-- 留言框 -->
+                    <div class="message-box">
+                        <textarea placeholder="写下你的感受..." id="message-8"></textarea>
+                        <button onclick="saveMessage(8)">保存留言</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- 事件9 -->
             <div class="timeline-item">
@@ -254,11 +341,11 @@
                         <strong>青岛之夏</strong>
                         <p>我们去了青岛，感受海风拂面的舒适。蔚蓝的天空，洁白的浪花，与你相依沙滩漫步，所有的风景都因为你的存在而更加迷人。</p>
                     </div>
-                    <img src="images/009.jpg" alt="青岛之夏" class="image" style="max-height: 300px;">
+                    <img src="images/009.jpg" alt="青岛之夏" class="image" style="max-height: 600px;">
                     <!-- 留言框 -->
                     <div class="message-box">
-                        <textarea placeholder="写下你的感受..."></textarea>
-                        <button>保存留言</button>
+                        <textarea placeholder="写下你的感受..." id="message-9"></textarea>
+                        <button onclick="saveMessage(9)">保存留言</button>
                     </div>
                 </div>
             </div>
@@ -271,11 +358,11 @@
                         <strong>峨眉雪景</strong>
                         <p>冬日的峨眉山银装素裹，我们手牵手走在雪地中。寒冷的天气抵挡不住内心的温暖。与你一起看雪，是我一直以来的愿望。</p>
                     </div>
-                    <img src="images/010.jpg" alt="峨眉雪景" class="image" style="max-width: 100%;">
+                    <img src="images/010.jpg" alt="峨眉雪景" class="image" style="max-height: 600px;">
                     <!-- 留言框 -->
                     <div class="message-box">
-                        <textarea placeholder="写下你的感受..."></textarea>
-                        <button>保存留言</button>
+                        <textarea placeholder="写下你的感受..." id="message-10"></textarea>
+                        <button onclick="saveMessage(10)">保存留言</button>
                     </div>
                 </div>
             </div>
@@ -290,8 +377,8 @@
                     </div>
                     <!-- 留言框 -->
                     <div class="message-box">
-                        <textarea placeholder="写下你的感受..."></textarea>
-                        <button>保存留言</button>
+                        <textarea placeholder="写下你的感受..." id="message-11"></textarea>
+                        <button onclick="saveMessage(11)">保存留言</button>
                     </div>
                 </div>
             </div>
@@ -302,9 +389,6 @@
     <div class="arrow left">&#9664;</div>
     <div class="arrow right">&#9654;</div>
 
-    <!-- 掉落信件 -->
-    <div class="falling-letter"></div>
-
     <script>
         class TimelineSlider {
             constructor() {
@@ -314,7 +398,6 @@
                 this.navDots = document.querySelector('.nav-dots');
                 this.leftArrow = document.querySelector('.arrow.left');
                 this.rightArrow = document.querySelector('.arrow.right');
-                this.letter = document.querySelector('.falling-letter');
                 this.currentIndex = 0;
                 this.startX = 0;
                 this.currentX = 0;
@@ -345,13 +428,10 @@
                 this.leftArrow.addEventListener('click', this.prev.bind(this));
                 this.rightArrow.addEventListener('click', this.next.bind(this));
 
-                // 图片点击放大效果
-                document.querySelectorAll('.image').forEach(img => {
-                    img.addEventListener('click', this.enlargeImage.bind(this, img));
-                });
-
                 // 初始化位置
                 this.updatePosition(0);
+                // 加载已保存的留言
+                this.loadMessages();
             }
 
             handleStart(e) {
@@ -379,20 +459,13 @@
                 }
                 this.currentIndex = Math.max(0, Math.min(this.currentIndex, this.items.length - 1));
                 this.slideTo(this.currentIndex);
-
-                // 当滑动到最后一个事件时显示掉落信件
-                if (this.currentIndex === this.items.length - 1) {
-                    this.letter.style.display = 'block';
-                } else {
-                    this.letter.style.display = 'none';
-                }
             }
 
             getClientX(e) {
                 return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             }
 
-            updatePosition(offset) {
+                       updatePosition(offset) {
                 const position = -this.currentIndex * window.innerWidth + offset;
                 this.track.style.transform = `translateX(${position}px)`;
             }
@@ -406,13 +479,6 @@
                 document.querySelectorAll('.dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === index);
                 });
-
-                // 当滑动到最后一个事件时显示掉落信件
-                if (this.currentIndex === this.items.length - 1) {
-                    this.letter.style.display = 'block';
-                } else {
-                    this.letter.style.display = 'none';
-                }
             }
 
             prev() {
@@ -425,19 +491,21 @@
                 this.slideTo(this.currentIndex);
             }
 
-            enlargeImage(img) {
-                const enlargedImg = img.cloneNode();
-                enlargedImg.style.position = 'fixed';
-                enlargedImg.style.top = '50%';
-                enlargedImg.style.left = '50%';
-                enlargedImg.style.transform = 'translate(-50%, -50%) scale(2)';
-                enlargedImg.style.zIndex = '1000';
-                enlargedImg.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-                enlargedImg.style.cursor = 'zoom-out';
-                document.body.appendChild(enlargedImg);
+            saveMessage(index) {
+                const textarea = document.getElementById(`message-${index}`);
+                const message = textarea.value;
+                localStorage.setItem(`message-${index}`, message);
+            }
 
-                enlargedImg.addEventListener('click', () => {
-                    document.body.removeChild(enlargedImg);
+            loadMessages() {
+                this.items.forEach((_, index) => {
+                    const textarea = document.getElementById(`message-${index + 1}`);
+                    if (textarea) {
+                        const savedMessage = localStorage.getItem(`message-${index + 1}`);
+                        if (savedMessage) {
+                            textarea.value = savedMessage;
+                        }
+                    }
                 });
             }
         }
@@ -446,6 +514,12 @@
         window.addEventListener('DOMContentLoaded', () => {
             new TimelineSlider();
         });
+
+        function saveMessage(index) {
+            const textarea = document.getElementById(`message-${index}`);
+            const message = textarea.value;
+            localStorage.setItem(`message-${index}`, message);
+        }
     </script>
 </body>
 </html>
