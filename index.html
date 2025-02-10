@@ -115,27 +115,33 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        .message-box {
-            margin-top: 1rem;
+
+        .love-button-container {
+            text-align: center;
+            margin: 3rem 0;
         }
 
-        .message-box textarea {
-            width: 100%;
-            height: 80px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
-            font-family: "Yu Mincho", "Microsoft YaHei", serif;
-        }
-
-        .message-box button {
-            margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
+        .love-button {
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .love-button:hover {
+            background-color: #d45555;
+        }
+
+        #gameCanvas {
+            display: none;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
         }
 
         .nav-dots {
@@ -210,14 +216,63 @@
                 font-size: 1rem;
             }
         }
+
+        .message-box {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .message-box textarea {
+            width: 100%;
+            height: 100px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--primary-color);
+            font-size: 1rem;
+            font-family: inherit;
+            resize: none;
+            outline: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: border-color 0.3s;
+        }
+
+        .message-box textarea:focus {
+            border-color: #d45555;
+        }
+
+        .save-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 1rem auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .save-button:hover {
+            background-color: #d45555;
+        }
     </style>
 </head>
 <body>
-    <header class="timeline-header">
-        <h1>我们的浪漫回忆时光轴</h1>
-    </header>
     <div class="swiper-container">
         <div class="timeline-track">
+            <!-- 事件0 -->
+            <div class="timeline-page">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <header class="timeline-header">
+                            <h1>我们的浪漫回忆时光轴</h1>
+                            <button class="love-button" onclick="startMemory()">开启回忆</button>
+                        </header>
+                    </div>
+                </div>
+            </div>
             <!-- 事件1 -->
             <div class="timeline-page">
                 <div class="timeline-item">
@@ -231,11 +286,12 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-1"></textarea>
-                            <button onclick="saveMessage(1)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(1)">保存留言</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- 事件2 -->
             <div class="timeline-page">
                 <div class="timeline-item">
@@ -249,7 +305,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-2"></textarea>
-                            <button onclick="saveMessage(2)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(2)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -268,7 +324,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-3"></textarea>
-                            <button onclick="saveMessage(3)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(3)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -287,7 +343,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-4"></textarea>
-                            <button onclick="saveMessage(4)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(4)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -305,7 +361,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-5"></textarea>
-                            <button onclick="saveMessage(5)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(5)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -324,7 +380,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-6"></textarea>
-                            <button onclick="saveMessage(6)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(6)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -343,7 +399,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-7"></textarea>
-                            <button onclick="saveMessage(7)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(7)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -362,7 +418,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-8"></textarea>
-                            <button onclick="saveMessage(8)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(8)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -380,7 +436,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-9"></textarea>
-                            <button onclick="saveMessage(9)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(9)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -399,7 +455,7 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-10"></textarea>
-                            <button onclick="saveMessage(10)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(10)">保存留言</button>
                         </div>
                     </div>
                 </div>
@@ -417,19 +473,23 @@
                         <!-- 留言框 -->
                         <div class="message-box">
                             <textarea placeholder="写下你的感受..." id="message-11"></textarea>
-                            <button onclick="saveMessage(11)">保存留言</button>
+                            <button class="save-button" onclick="saveMessage(11)">保存留言</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="nav-dots"></div>
     <div class="arrow left">&#9664;</div>
     <div class="arrow right">&#9654;</div>
 
     <script>
+        function startMemory() {
+            const timelineSlider = new TimelineSlider();
+            timelineSlider.slideTo(1); // 进入第一个事件
+        }
+
         class TimelineSlider {
             constructor() {
                 this.container = document.querySelector('.swiper-container');
@@ -448,6 +508,7 @@
 
                 this.init();
             }
+
             init() {
                 // 创建导航点
                 this.items.forEach((_, index) => {
@@ -497,6 +558,7 @@
 
                 this.updatePosition(deltaX);
             }
+
             handleEnd() {
                 if (!this.isDragging) return;
                 this.isDragging = false;
@@ -509,7 +571,6 @@
                 this.currentIndex = Math.max(0, Math.min(this.currentIndex, this.items.length - 1));
                 this.slideTo(this.currentIndex);
             }
-
             getClientX(e) {
                 return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             }
@@ -614,6 +675,71 @@
                 alert('留言保存失败，请检查浏览器设置');
             }
         }
+
+        function startGame() {
+            document.querySelector('.swiper-container').style.display = 'none';
+            document.getElementById('gameCanvas').style.display = 'block';
+            initGame();
+        }
+
+        function initGame() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            let score = 0;
+            let moles = [];
+            let gameInterval;
+
+            canvas.width = 400;
+            canvas.height = 400;
+
+            function drawMole(x, y) {
+                ctx.fillStyle = '#e66767';
+                ctx.beginPath();
+                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function createMole() {
+                const x = Math.random() * (canvas.width - 40) + 20;
+                const y = Math.random() * (canvas.height - 40) + 20;
+                moles.push({ x, y });
+            }
+
+            function drawGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                moles.forEach((mole) => drawMole(mole.x, mole.y));
+                ctx.fillStyle = 'black';
+                ctx.font = '20px Arial';
+                ctx.fillText(`Score: ${score}`, 10, 30);
+            }
+
+            function gameLoop() {
+                drawGame();
+            }
+
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                moles = moles.filter((mole) => {
+                    const distance = Math.hypot(mole.x - x, mole.y - y);
+                    if (distance < 20) {
+                        score += 1;
+                        return false;
+                    }
+                    return true;
+                });
+
+                createMole();
+            });
+
+            gameInterval = setInterval(gameLoop, 1000);
+            for (let i = 0; i < 3; i++) {
+                createMole();
+            }
+        }
     </script>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
 </body>
 </html>
