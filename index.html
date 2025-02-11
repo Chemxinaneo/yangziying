@@ -240,22 +240,22 @@
         }
 
         .save-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: block;
-            margin: 1rem auto 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 1rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 
-        .save-button:hover {
-            background-color: #d45555;
-        }
+.save-button:hover {
+    background-color: #d45555;
+}
 
 .game-board {
     display: grid;
@@ -330,37 +330,42 @@
     45% { transform: translate(-50%, -50%) scale(1.2); }
     60% { transform: translate(-50%, -50%) scale(1); }
 }
+
 .swiper-container {
-  -webkit-overflow-scrolling: touch; /* 添加iOS平滑滚动 */
-  overscroll-behavior: contain; /* 防止父级滚动 */
+    -webkit-overflow-scrolling: touch; /* 添加iOS平滑滚动 */
+    overscroll-behavior: contain; /* 防止父级滚动 */
 }
 
 .timeline-page {
-  min-width: 100vw;
-  height: 100vh; /* 修复iOS高度问题 */
-  padding-bottom: 60px; /* 为导航点留出空间 */
+    min-width: 100vw;
+    height: 100vh; /* 修复iOS高度问题 */
+    padding-bottom: 60px; /* 为导航点留出空间 */
 }
+
 .image {
-  max-width: 100%;
-  height: auto; /* 保持比例 */
-  max-height: 50vh; /* 动态高度 */
+    max-width: 100%;
+    height: auto; /* 保持比例 */
+    max-height: 50vh; /* 动态高度 */
 }
+
 .nav-dots {
-  bottom: 10px;
-  padding: 5px 10px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 20px;
+    bottom: 10px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 20px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+    width: 8px;
+    height: 8px;
 }
+
 .love-button, .save-button {
-  min-width: 120px;
-  padding: 12px 24px;
-  touch-action: manipulation; /* 优化触摸响应 */
+    min-width: 120px;
+    padding: 12px 24px;
+    touch-action: manipulation; /* 优化触摸响应 */
 }
+
 /* 默认样式，适用于较大屏幕（桌面端） */
 body {
     font-size: 16px;
@@ -410,12 +415,6 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .card {
-        width: 50px; /* 调整宽度 */
-        height: 50px; /* 调整高度 */
-    }
-}
 
     </style>
 </head>
@@ -677,15 +676,15 @@ body {
         });
 
         function checkPassword() {
-            const input = document.querySelector('.password-input').value;
-            const correctPassword = '20200407';
-            if (input === correctPassword) {
-                const timelineSlider = new TimelineSlider();
-                timelineSlider.slideTo(1); // 进入第一个事件
-            } else {
-                alert('密码错误，请输入正确的8位数字。');
-            }
-        }
+    const input = document.querySelector('.password-input').value;
+    const correctPassword = '20200407';
+    if (input === correctPassword) {
+        alert('恭喜你答对啦！前往下一页吧❤');
+    } else {
+        alert('密码错误，请输入正确的8位数字。');
+    }
+}
+
 
         function startMemory() {
             const timelineSlider = new TimelineSlider();
