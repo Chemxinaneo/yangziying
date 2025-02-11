@@ -227,7 +227,7 @@
             padding: 1rem;
             border-radius: 10px;
             border: 1px solid var(--primary-color);
-            font-size: 1rem;
+            font-size: 1rem
             font-family: inherit;
             resize: none;
             outline: none;
@@ -330,13 +330,62 @@
     45% { transform: translate(-50%, -50%) scale(1.2); }
     60% { transform: translate(-50%, -50%) scale(1); }
 }
+/* 默认样式，适用于较大屏幕（桌面端） */
+body {
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 调整小方块的大小 */
+.card {
+    width: 80px;
+    height: 80px;
+}
+
+/* 当屏幕宽度小于768px时（如平板和手机端） */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* 当屏幕宽度小于480px时（如手机端） */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .card {
+        width: 50px;
+        height: 50px;
+    }
+}
 
 @media (max-width: 768px) {
     .card {
-        width: 60px; /* 调整宽度 */
-        height: 60px; /* 调整高度 */
+        width: 50px; /* 调整宽度 */
+        height: 50px; /* 调整高度 */
     }
 }
+
     </style>
 </head>
 <body>
@@ -860,36 +909,43 @@
                 });
             }
 
-            function handleCardFlip(card) {
-                const audio = document.getElementById('flipSound');
-                audio.currentTime = 0;
-                audio.play();
+function handleCardFlip(card) {
+    // 防止同一张卡片重复点击
+    if (flippedCards.includes(card) || card.classList.contains('matched') || !canFlip) return;
 
-                card.classList.add('flipped');
-                flippedCards.push(card);
+    // 播放音效
+    const audio = document.getElementById('flipSound');
+    audio.currentTime = 0;
+    audio.play();
 
-                if (flippedCards.length === 2) {
-                    canFlip = false;
-                    setTimeout(checkMatch, 1000);
-                }
-            }
+    card.classList.add('flipped');
+    flippedCards.push(card);
 
-            function checkMatch() {
-                const [card1, card2] = flippedCards;
-                const isMatch = card1.dataset.value === card2.dataset.value;
+    if (flippedCards.length === 2) {
+        canFlip = false;
+        setTimeout(checkMatch, 1000);
+    }
+}
 
-                if (isMatch) {
-                    card1.classList.add('matched');
-                    card2.classList.add('matched');
-                    checkWin();
-                } else {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                }
+function checkMatch() {
+    const [card1, card2] = flippedCards;
+    const isMatch = card1.dataset.value === card2.dataset.value;
 
-                flippedCards = [];
-                canFlip = true;
-            }
+    if (isMatch) {
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        checkWin();
+    } else {
+        card1.classList.remove('flipped');
+        card2.classList.remove('flipped');
+    }
+
+    // 清空翻开的卡片数组，并允许翻转操作
+    flippedCards = [];
+    canFlip = true;
+}
+
+
 
             function checkWin() {
                 const matched = document.querySelectorAll('.matched').length;
