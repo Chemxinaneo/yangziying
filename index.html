@@ -257,79 +257,86 @@
             background-color: #d45555;
         }
 
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            max-width: 560px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 560px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        .card {
-            width: 120px;
-            height: 120px;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
+.card {
+    width: 80px; /* 调整宽度 */
+    height: 80px; /* 调整高度 */
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
 
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
+.card.flipped {
+    transform: rotateY(180deg);
+}
 
-        .card-front,
-        .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            background-size: cover;
-            background-position: center;
-        }
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
 
-        .card-front {
-            background-color: #ffffff;
-            transform: rotateY(180deg);
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
-        }
+.card-front {
+    background-color: #ffffff;
+    transform: rotateY(180deg);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+}
 
-        .card-back {
-            background: linear-gradient(135deg, #ff6b6b, #ff8787);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+.card-back {
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-        .matched {
-            opacity: 0.4;
-            filter: grayscale(100%);
-            cursor: default;
-        }
+.matched {
+    opacity: 0.4;
+    filter: grayscale(100%);
+    cursor: default;
+}
 
-        #winMessage {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            color: #ff6b6b;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            display: none;
-            animation: heartbeat 1.5s infinite;
-        }
+#winMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    display: none;
+    animation: heartbeat 1.5s infinite;
+}
 
-                @keyframes heartbeat {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            15% { transform: translate(-50%, -50%) scale(1.3); }
-            30% { transform: translate(-50%, -50%) scale(1); }
-            45% { transform: translate(-50%, -50%) scale(1.2); }
-            60% { transform: translate(-50%, -50%) scale(1); }
-        }
+@keyframes heartbeat {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    15% { transform: translate(-50%, -50%) scale(1.3); }
+    30% { transform: translate(-50%, -50%) scale(1); }
+    45% { transform: translate(-50%, -50%) scale(1.2); }
+    60% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 60px; /* 调整宽度 */
+        height: 60px; /* 调整高度 */
+    }
+}
     </style>
 </head>
 <body>
