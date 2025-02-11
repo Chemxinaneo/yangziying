@@ -330,6 +330,37 @@
     45% { transform: translate(-50%, -50%) scale(1.2); }
     60% { transform: translate(-50%, -50%) scale(1); }
 }
+.swiper-container {
+  -webkit-overflow-scrolling: touch; /* 添加iOS平滑滚动 */
+  overscroll-behavior: contain; /* 防止父级滚动 */
+}
+
+.timeline-page {
+  min-width: 100vw;
+  height: 100vh; /* 修复iOS高度问题 */
+  padding-bottom: 60px; /* 为导航点留出空间 */
+}
+.image {
+  max-width: 100%;
+  height: auto; /* 保持比例 */
+  max-height: 50vh; /* 动态高度 */
+}
+.nav-dots {
+  bottom: 10px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+}
+.love-button, .save-button {
+  min-width: 120px;
+  padding: 12px 24px;
+  touch-action: manipulation; /* 优化触摸响应 */
+}
 /* 默认样式，适用于较大屏幕（桌面端） */
 body {
     font-size: 16px;
@@ -627,7 +658,7 @@ body {
                             <h1>图片记忆游戏</h1>
                         </header>
                         <div class="game-board" id="board"></div>
-                        <div id="winMessage">我爱你高思余</div>
+                        <div id="winMessage">I LOVE YOU GSY❤</div>
                         <audio id="flipSound">
                             <source src="click.mp3" type="audio/mpeg">
                         </audio>
